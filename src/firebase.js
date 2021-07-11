@@ -1,6 +1,6 @@
-import { seedDatabase } from "../seed";
+import firebase from "firebase"
 
-const config = {
+const firebaseConfig = {
     apiKey: "AIzaSyDkkiT5oiiY4BGD4atNYOTTSet3_2DeEno",
     authDomain: "instagram-clone-e28a9.firebaseapp.com",
     projectId: "instagram-clone-e28a9",
@@ -9,11 +9,10 @@ const config = {
     appId: "1:959935637598:web:34b540e0c5fb73b9d0accf"
 };
 
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-const firebase = window.firebase.initializeApp(config);
-const { FieldValue } = window.firebase.firestore;
+const db = firebaseApp.firestore()
+const auth = firebase.auth()
+const storage = firebase.storage()
 
-seedDatabase(firebase)
-
-
-export { firebase, FieldValue };
+export { db, auth, storage }
