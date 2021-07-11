@@ -29,10 +29,10 @@ export default function ImageUpload({username}){
             alert(err.message)
         },
         () => {
-            storage.ref("images").
-            child(image.name).
-            getDownloadURL().
-            then(url => {
+            storage.ref("images")
+            .child(image.name)
+            .getDownloadURL()
+            .then(url => {
                 db.collection('posts').add({
                     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                     caption: caption,
